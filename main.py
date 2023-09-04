@@ -8,7 +8,7 @@ from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 bashme_logo = """
 
          _nnnn_
-        dGGGGMMb     ,"""""""""""""""""".
+        dGGGGMMb     ,,,,,,,,,,,,,,,,,,,.
        @p~qp~~qMb    | Das is das code  |
        M|@||@) M|   _;..................'
        @,----.JM| -'.
@@ -23,6 +23,7 @@ bashme_logo = """
 _)      \.___.,|     .'
 \____   )WWWMM|   .'
      `-'       `--'
+-----------------------------------------------------
 """
 
 logging.set_verbosity(logging.CRITICAL)
