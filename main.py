@@ -39,9 +39,26 @@ def main():
     {prompt}
     [/INST]
     '''
+
+    # method 1
     input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
-    output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
-    print( tokenizer.decode(output[0]).split('[/INST]')[-1] )
+    output = model.generate(inputs=input_ids, max_new_tokens=512)
+    # output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
+    raw_output = tokenizer.decode(output[0])
+
+    # method 2
+    # pipe = pipeline(
+    #     "text-generation",
+    #     model=model,
+    #     tokenizer=tokenizer,
+    #     max_new_tokens=512,
+    #     # temperature=0.7,
+    #     # top_p=0.95,
+    #     repetition_penalty=1.15
+    # )
+    # raw_output = pipe(prompt_template)[0]['generated_text']
+
+    print( raw_output.split('[/INST]')[-1] )
 
     # parse the results
     # print the results
