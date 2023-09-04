@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-srun --gpus=1 --cpus-per-gpu=4  --time=00:01:00 -p gpu  python main.py
+srun --gpus=1 --cpus-per-gpu=4  --time=00:01:00 -p gpu  python /opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/bashme/main.py "$@"
