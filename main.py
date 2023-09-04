@@ -5,6 +5,26 @@ from transformers import AutoTokenizer, pipeline, logging
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 
 
+bashme_logo = """
+
+         _nnnn_
+        dGGGGMMb     ,"""""""""""""""""".
+       @p~qp~~qMb    | Das is das code  |
+       M|@||@) M|   _;..................'
+       @,----.JM| -'.
+      JS^\__/  qKL
+     dZP        qKRb
+    dZP          qKKb
+   fZP            SMMb
+   KKK            KKK
+   FqM            WWW
+ __| ".        |\dS"qML
+ |    `.       | `' \Zq
+_)      \.___.,|     .'
+\____   )WWWMM|   .'
+     `-'       `--'
+"""
+
 logging.set_verbosity(logging.CRITICAL)
 
 def load_CodeLlama_llm():
@@ -58,6 +78,7 @@ def main():
     # )
     # raw_output = pipe(prompt_template)[0]['generated_text']
     raw_output.replace('</s>','')
+    print(bashme_logo)
     print( raw_output.split('[/INST]')[-1] )
 
     # parse the results
