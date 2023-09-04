@@ -57,7 +57,7 @@ def main():
     #     repetition_penalty=1.15
     # )
     # raw_output = pipe(prompt_template)[0]['generated_text']
-
+    raw_output.replace('</s>','')
     print( raw_output.split('[/INST]')[-1] )
 
     # parse the results
