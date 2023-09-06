@@ -3,14 +3,16 @@ import logging
 import argparse
 from transformers import AutoTokenizer, pipeline, logging
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
-
-
+from rich import print as rprint
+from rich.markdown import Markdown
+from rich.console import Console
+from rich.syntax import Syntax
 bashme_logo = """
 
          _nnnn_
-        dGGGGMMb     ,,,,,,,,,,,,,,,,,,,.
-       @p~qp~~qMb    | Das is das code  |
-       M|@||@) M|   _;..................'
+        dGGGGMMb     ,,,,,,,,,,,,,,,,,,,,,,,.
+       @p~qp~~qMb    | Das is das codechen  |
+       M|@||@) M|   _;......................'
        @,----.JM| -'.
       JS^\__/  qKL
      dZP        qKRb
@@ -56,7 +58,7 @@ def main():
     prompt = args.prompt
 
     # construct complete prompt
-    prompt_template=f'''[INST] Write bash code to solve the following coding problem that obeys the constraints. Please wrap your code answer using ```. write single line bash codes as much as possible. Keep the explanation very short.:
+    prompt_template=f'''[INST] Write bash code to solve the following coding problem that obeys the constraints. Please wrap your code answer using ```. write single line bash codes as much as possible. Keep the explanation very short. Use markdown syntax:
     {prompt}
     [/INST]
     '''
@@ -67,7 +69,7 @@ def main():
     # output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
     raw_output = tokenizer.decode(output[0])
 
-    # method 2
+    # # method 2
     # pipe = pipeline(
     #     "text-generation",
     #     model=model,
@@ -78,9 +80,20 @@ def main():
     #     repetition_penalty=1.15
     # )
     # raw_output = pipe(prompt_template)[0]['generated_text']
-    raw_output.replace('</s>','')
+    raw_output = raw_output.replace('</s>','')
+    raw_output = raw_output.split('[/INST]')[-1]
+    # rprint(raw_output)
+    code = "$ " + raw_output.split("```bash")[1].split("```")[0].strip()
+    explanation = raw_output.split("```bash")[1].split("```")[1]
+
+    code_syntax = Syntax(code, "Arduino", theme="github-dark", line_numbers=True)
+
+    console = Console()
     print(bashme_logo)
-    print( raw_output.split('[/INST]')[-1] )
+    console.print(code_syntax)
+    console.print(Markdown(explanation))
+
+
 
     # parse the results
     # print the results
