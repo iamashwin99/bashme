@@ -75,6 +75,7 @@ def main():
     output = model.generate(inputs=input_ids, max_new_tokens=512)
     # output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
     raw_output = tokenizer.decode(output[0])
+    # print(f"{raw_output=}")
 
     # # method 2
     # pipe = pipeline(
