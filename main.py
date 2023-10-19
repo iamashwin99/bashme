@@ -9,23 +9,9 @@ from rich.console import Console
 from rich.syntax import Syntax
 
 bashme_logo = """
-
-         _nnnn_
-        dGGGGMMb     ,,,,,,,,,,,,,,,,,,,,,,,.
-       @p~qp~~qMb    | Das is das codechen  |
-       M|@||@) M|   _;......................'
-       @,----.JM| -'.
-      JS^\__/  qKL
-     dZP        qKRb
-    dZP          qKKb
-   fZP            SMMb
-   KKK            KKK
-   FqM            WWW
- __| ".        |\dS"qML
- |    `.       | `' \Zq
-_)      \.___.,|     .'
-\____   )WWWMM|   .'
-     `-'       `--'
+ __        __              ___
+|__)  /\  /__` |__|  |\/| |__
+|__) /~~\ .__/ |  |  |  | |___
 -----------------------------------------------------
 """
 
