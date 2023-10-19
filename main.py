@@ -102,6 +102,9 @@ def main():
     # rprint(raw_output)
     code = "$ " + raw_output.split("```bash")[1].split("```")[0].strip()
     explanation = raw_output.split("```bash")[1].split("```")[1]
+    explanation += (
+        "Pass `--explain` to include explanation " if not include_explanation else ""
+    )
 
     code_syntax = Syntax(code, "Arduino", theme="github-dark", line_numbers=True)
 
