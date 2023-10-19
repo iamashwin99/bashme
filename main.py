@@ -42,8 +42,11 @@ def main():
     # set the prompt
     parser = argparse.ArgumentParser()
     parser.add_argument("prompt", help="prompt to generate code for")
+    parser.add_argument("--explain", action="store_true", help="include explanation in output")
+
     args = parser.parse_args()
     prompt = args.prompt
+    include_explanation = args.explain
 
     # load the model
     model_name_or_path = os.getenv("MPSD_CODE_LLAMA",None) or "../models/CodeLlama-7B-Instruct-GPTQ"
@@ -56,14 +59,11 @@ def main():
             device="cuda:0",
             use_triton=False,
             quantize_config=None)
-    # set the prompt
-    parser = argparse.ArgumentParser()
-    parser.add_argument("prompt", help="prompt to generate code for")
-    args = parser.parse_args()
-    prompt = args.prompt
+
+    detail_prompt = "Keep the explanation very short." if include_explanation else "No explanation required, write only code."
 
     # construct complete prompt
-    prompt_template=f'''[INST] Write bash code to solve the following coding problem that obeys the constraints. Please wrap your code answer using ```. write single line bash codes as much as possible. Keep the explanation very short. Use markdown syntax:
+    prompt_template=f'''[INST] Write bash code to solve the following coding problem that obeys the constraints. Please wrap your code answer using ```. write single line bash codes as much as possible. If multiple steps are required split them. {detail_prompt} Use markdown syntax:
     {prompt}
     [/INST]
     '''
