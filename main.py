@@ -7,6 +7,7 @@ from rich import print as rprint
 from rich.markdown import Markdown
 from rich.console import Console
 from rich.syntax import Syntax
+# import cProfile
 
 bashme_logo = """
  __        __              ___
@@ -107,4 +108,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # cProfile.run('main()')
     main()
