@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-srun --gpus=1 --cpus-per-gpu=4  --time=00:01:00 -p gpu  python /opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/bashme/main.py "$@"
+start_time=$(date +%s)
+srun --gpus=1 --cpus-per-gpu=1  --time=00:01:00 -p gpu  python /opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/bashme/main.py "$@"
+run_time=$(($(date +%s) - start_time))
+echo "This request job ran for $run_time seconds"
