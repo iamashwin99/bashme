@@ -39,6 +39,11 @@ def tokenise(prompt):
     pass
 
 def main():
+    # set the prompt
+    parser = argparse.ArgumentParser()
+    parser.add_argument("prompt", help="prompt to generate code for")
+    args = parser.parse_args()
+    prompt = args.prompt
 
     # load the model
     model_name_or_path = os.getenv("MPSD_CODE_LLAMA",None) or "../models/CodeLlama-7B-Instruct-GPTQ"
