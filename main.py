@@ -39,6 +39,9 @@ def main():
     include_explanation = args.explain
 
     # load the model
+    # TODO try to use all gpus if possible
+    # import torch
+    # print(f"Available no of gpus:{torch.cuda.device_count()}"")
     model_name_or_path = (
         os.getenv("MPSD_CODE_LLAMA", None) or "../models/CodeLlama-7B-Instruct-GPTQ"
     )
