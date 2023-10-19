@@ -19,6 +19,7 @@ load_python("/opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/bashme/
 
 --  set env variable MPSD_CODE_LLAMA
 setenv("MPSD_CODE_LLAMA", "/opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/models/CodeLlama-7B-Instruct-GPTQ")
+-- setenv("MPSD_CODE_LLAMA", "/opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/models/stablelm-tuned-alpha-3b-gptq-4bit-128g")
 
 --  add bashme binary to path
 prepend_path("PATH", "/opt_mpsd/linux-debian11/ashwins_playground/theaiplayground/bashme")
